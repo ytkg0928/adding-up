@@ -68,10 +68,10 @@ rl.on('close', () => {
 //  key と value の対を配列とし、その配列を要素とした配列（ペア配列の配列）に変換されます。
 
     const rankingArray = Array.from(prefectureDataMap).sort((pair1, pair2) => {
-        return pair2[1].change - pair1[1].change;
+        return pair1[1].change - pair2[1].change;
     });
-    const rankingStrings = rankingArray.map(([key, value]) => {
-        return key + ': ' + value.popu10 + '=>' + value.popu15 + ' 変化率:' + value.change;
+    const rankingStrings = rankingArray.map(([key, value], i) => {
+        return  (i + 1) + '位 ' + key + ': ' + value.popu10 + '=>' + value.popu15 + ' 変化率:' + value.change;
     });
     console.log(rankingStrings);
 });
